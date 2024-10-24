@@ -22,7 +22,7 @@ public class MainApp extends Application {
         setRoot(fxml,stage.getTitle());
     }
 
-    static void setRoot(String fxml, String title) throws IOException {
+    public static void setRoot(String fxml, String title) throws IOException {
         Scene scene = new Scene(loadFXML(fxml));
         stage.setTitle(title);
         stage.setScene(scene);
