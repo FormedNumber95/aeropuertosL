@@ -14,5 +14,21 @@ public class ModeloDireccion {
 		this.calle = calle;
 		this.numero = numero;
 	}
+
+	public String getPais() {
+		return pais;
+	}
+
+	public String getCiudad() {
+		return ciudad;
+	}
+
+	public String getCalle() {
+		return calle;
+	}
+
+	public int getNumero() {
+		return numero;
+	}
 	
 }

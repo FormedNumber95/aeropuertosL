@@ -31,9 +31,9 @@
           </Menu>
           <Menu mnemonicParsing="false" text="Aviones">
             <items>
-              <MenuItem mnemonicParsing="false" text="Añadir" />
-                  <MenuItem mnemonicParsing="false" text="Activar / desactivar" />
-                  <MenuItem mnemonicParsing="false" text="Borrar" />
+              <MenuItem fx:id="aniadirAvion" mnemonicParsing="false" text="Añadir" />
+                  <MenuItem fx:id="toggleAvion" mnemonicParsing="false" text="Activar / desactivar" />
+                  <MenuItem fx:id="borrarAvion" mnemonicParsing="false" text="Borrar" />
             </items>
           </Menu>
             <Menu mnemonicParsing="false" text="Ayuda" />
@@ -55,12 +55,12 @@
          <children>
             <HBox alignment="CENTER_LEFT" spacing="10.0">
                <children>
-                  <RadioButton fx:id="radPublic" mnemonicParsing="false" selected="true" text="Públicos">
+                  <RadioButton fx:id="radPublic" mnemonicParsing="false" onAction="#toggleTipoAeropuerto" selected="true" text="Públicos">
                      <toggleGroup>
                         <ToggleGroup fx:id="visibilidad" />
                      </toggleGroup>
                   </RadioButton>
-                  <RadioButton fx:id="radPrivate" mnemonicParsing="false" text="Privados" toggleGroup="$visibilidad" />
+                  <RadioButton fx:id="radPrivate" mnemonicParsing="false" onAction="#toggleTipoAeropuerto" text="Privados" toggleGroup="$visibilidad" />
                </children>
                <GridPane.margin>
                   <Insets left="10.0" />
@@ -77,17 +77,19 @@
             </HBox>
          </children>
       </GridPane>
-      <TableView>
+      <TableView fx:id="idTabla">
         <columns>
-          <TableColumn fx:id="tblId" prefWidth="52.0" resizable="false" text="ID" />
-          <TableColumn fx:id="tblNombre" prefWidth="117.5999755859375" resizable="false" text="Nombre" />
-            <TableColumn fx:id="tblPais" prefWidth="101.5999755859375" resizable="false" text="Pais" />
-            <TableColumn fx:id="tblCiudad" prefWidth="82.4000244140625" resizable="false" text="Ciudad" />
-            <TableColumn fx:id="tblCalle" prefWidth="72.79998779296875" resizable="false" text="Calle" />
-            <TableColumn fx:id="tblNumero" prefWidth="35.20001220703125" resizable="false" text="Número" />
-            <TableColumn fx:id="tblAnio" prefWidth="32.00006103515625" resizable="false" text="Año" />
-            <TableColumn fx:id="tblCapacidad" prefWidth="99.19989013671875" resizable="false" text="Capacidad" />
-            <TableColumn fx:id="tblNumSocios" prefWidth="94.400146484375" resizable="false" text="Nº Socios" />
+          <TableColumn fx:id="tblId" editable="false" prefWidth="39.20001220703125" resizable="false" text="ID" />
+          <TableColumn fx:id="tblNombre" editable="false" prefWidth="92.79998779296875" resizable="false" text="Nombre" />
+            <TableColumn fx:id="tblPais" editable="false" resizable="false" text="Pais" />
+            <TableColumn fx:id="tblCiudad" editable="false" resizable="false" text="Ciudad" />
+            <TableColumn fx:id="tblCalle" editable="false" prefWidth="120.79998779296875" resizable="false" text="Calle" />
+            <TableColumn fx:id="tblNumero" editable="false" prefWidth="39.20001220703125" resizable="false" text="Número" />
+            <TableColumn fx:id="tblAnio" editable="false" resizable="false" text="Año" />
+            <TableColumn fx:id="tblCapacidad" editable="false" prefWidth="99.19989013671875" resizable="false" text="Capacidad" />
+            <TableColumn fx:id="tblNumSocios" editable="false" prefWidth="160.0" resizable="false" text="Nº Socios" visible="false" />
+            <TableColumn fx:id="tblFinanciacion" minWidth="0.0" text="Financiacion" />
+            <TableColumn fx:id="tblNumeroTrabajadores" editable="false" text="Numero Trabajadores" />
         </columns>
       </TableView>
    </children>

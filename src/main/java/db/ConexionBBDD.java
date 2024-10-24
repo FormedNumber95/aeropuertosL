@@ -14,7 +14,7 @@ import java.util.Properties;
 public class ConexionBBDD {
 	
 	/** La conexion. */
-	private final Connection connection;
+	private static Connection connection;
 	
 	/**
 	 * Constructor sin paramentros.
@@ -26,9 +26,9 @@ public class ConexionBBDD {
 		 String url=connConfig.getProperty("dburl");
          connection = DriverManager.getConnection(url, connConfig);
          connection.setAutoCommit(true);
-         DatabaseMetaData databaseMetaData = connection.getMetaData();
        //debug
-         /*
+        /* 
+         DatabaseMetaData databaseMetaData = connection.getMetaData();
          System.out.println();
          System.out.println("--- Datos de conexión ------------------------------------------");
          System.out.printf("Base de datos: %s%n", databaseMetaData.getDatabaseProductName());
@@ -46,7 +46,7 @@ public class ConexionBBDD {
 	 *
 	 * @return the connection
 	 */
-	public Connection getConnection() {
+	public static Connection getConnection() {
 		return connection;
 	}
 	

@@ -27,7 +27,7 @@ public class loginController {
     	Properties config=ConexionBBDD.loadProperties();
     	if(txtUser.getText().equals(config.getProperty("user"))&&txtPassword.getText().equals(config.getProperty("password"))) {
     		try {
-				MainApp.setRoot("listadoAeropuertos", "");
+				MainApp.setRoot("listadoAeropuertos", "AVIONES - AEROPUERTOS");
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
