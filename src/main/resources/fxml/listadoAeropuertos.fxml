@@ -79,17 +79,17 @@
       </GridPane>
       <TableView fx:id="idTabla">
         <columns>
-          <TableColumn fx:id="tblId" editable="false" prefWidth="39.20001220703125" resizable="false" text="ID" />
-          <TableColumn fx:id="tblNombre" editable="false" prefWidth="92.79998779296875" resizable="false" text="Nombre" />
-            <TableColumn fx:id="tblPais" editable="false" resizable="false" text="Pais" />
-            <TableColumn fx:id="tblCiudad" editable="false" resizable="false" text="Ciudad" />
-            <TableColumn fx:id="tblCalle" editable="false" prefWidth="120.79998779296875" resizable="false" text="Calle" />
-            <TableColumn fx:id="tblNumero" editable="false" prefWidth="39.20001220703125" resizable="false" text="Número" />
-            <TableColumn fx:id="tblAnio" editable="false" resizable="false" text="Año" />
-            <TableColumn fx:id="tblCapacidad" editable="false" prefWidth="99.19989013671875" resizable="false" text="Capacidad" />
-            <TableColumn fx:id="tblNumSocios" editable="false" prefWidth="160.0" resizable="false" text="Nº Socios" visible="false" />
+          <TableColumn fx:id="tblId" prefWidth="39.20001220703125" resizable="false" text="ID" />
+          <TableColumn fx:id="tblNombre" prefWidth="92.79998779296875" resizable="false" text="Nombre" />
+            <TableColumn fx:id="tblPais" resizable="false" text="Pais" />
+            <TableColumn fx:id="tblCiudad" resizable="false" text="Ciudad" />
+            <TableColumn fx:id="tblCalle" prefWidth="120.79998779296875" resizable="false" text="Calle" />
+            <TableColumn fx:id="tblNumero" prefWidth="39.20001220703125" resizable="false" text="Número" />
+            <TableColumn fx:id="tblAnio" resizable="false" text="Año" />
+            <TableColumn fx:id="tblCapacidad" prefWidth="99.19989013671875" resizable="false" text="Capacidad" />
+            <TableColumn fx:id="tblNumSocios" prefWidth="160.0" resizable="false" text="Nº Socios" visible="false" />
             <TableColumn fx:id="tblFinanciacion" minWidth="0.0" text="Financiacion" />
-            <TableColumn fx:id="tblNumeroTrabajadores" editable="false" text="Numero Trabajadores" />
+            <TableColumn fx:id="tblNumeroTrabajadores" text="Numero Trabajadores" />
         </columns>
       </TableView>
    </children>

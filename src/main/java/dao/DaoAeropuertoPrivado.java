@@ -18,11 +18,13 @@ public class DaoAeropuertoPrivado {
 		ObservableList<ModeloAeropuertoPrivado>lst=FXCollections.observableArrayList();
 		try {
 			conection=ConexionBBDD.getConnection();
-			String select="SELECT numero_socios,nombre,anio_inauguracion,capacidad,id_direccion,imagen FROM aeropuertos_privados,aeropuertos WHERE id=id_aeropuerto";
+			String select="SELECT id,numero_socios,nombre,anio_inauguracion,capacidad,id_direccion,imagen FROM aeropuertos_privados,aeropuertos WHERE id=id_aeropuerto";
 			PreparedStatement pstmt = conection.prepareStatement(select);
 			ResultSet rs = pstmt.executeQuery();
             while (rs.next()) {
-            	lst.add(new ModeloAeropuertoPrivado(rs.getString("nombre"),rs.getInt("anio_inauguracion"),rs.getInt("capacidad"), DaoDireccion.crearModeloDireccionPorID(rs.getInt("id_direccion")), rs.getBlob("imagen"),rs.getInt("numero_socios")));
+            	ModeloAeropuertoPrivado modelo=new ModeloAeropuertoPrivado(rs.getString("nombre"),rs.getInt("anio_inauguracion"),rs.getInt("capacidad"), DaoDireccion.crearModeloDireccionPorID(rs.getInt("id_direccion")), rs.getBlob("imagen"),rs.getInt("numero_socios"));
+            	modelo.setId(rs.getInt("id"));
+            	lst.add(modelo);
             }
 		} catch (SQLException e) {
 			e.printStackTrace();

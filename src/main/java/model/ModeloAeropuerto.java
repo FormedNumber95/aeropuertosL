@@ -4,6 +4,7 @@ import java.sql.Blob;
 
 public class ModeloAeropuerto {
 
+	int id;
 	String nombre;
 	int anioInauguracion;
 	int capacidad;
@@ -28,6 +29,14 @@ public class ModeloAeropuerto {
 
 	public Blob getImagen() {
 		return imagen;
+	}
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public ModeloAeropuerto(String nombre, int anioInauguracion, int capacidad, ModeloDireccion direccion,
