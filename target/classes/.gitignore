@@ -1,6 +1,6 @@
 /module-info.class
-/ctrl/
-/model/
-/dao/
 /META-INF/
+/ctrl/
 /es/
+/dao/
+/db/

@@ -8,8 +8,6 @@ import java.sql.SQLException;
 import db.ConexionBBDD;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import model.ModeloAeropuerto;
-import model.ModeloAeropuertoPrivado;
 import model.ModeloAeropuertoPublico;
 
 /**
