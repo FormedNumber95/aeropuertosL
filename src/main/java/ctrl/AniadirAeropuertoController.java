@@ -18,68 +18,100 @@ import model.ModeloAeropuertoPrivado;
 import model.ModeloAeropuertoPublico;
 import model.ModeloDireccion;
 
+/**
+ * Clase AniadirAeropuertoController.
+ */
 public class AniadirAeropuertoController {
 
+    /** EL btn guardar. */
     @FXML
     private Button btnGuardar;
 
+    /** EL cancelar aeropuerto. */
     @FXML
     private Button cancelarAeropuerto;
 
+    /** EL grid privado. */
     @FXML
     private GridPane gridPrivado;
 
+    /** EL grid publico. */
     @FXML
     private GridPane gridPublico;
 
+    /** EL grupo tipo. */
     @FXML
     private ToggleGroup grupoTipo;
 
+    /** EL rad privado. */
     @FXML
     private RadioButton radPrivado;
 
+    /** EL rad publico. */
     @FXML
     private RadioButton radPublico;
 
+    /** EL txt calle. */
     @FXML
     private TextField txtCalle;
 
+    /** EL txt capacidad. */
     @FXML
     private TextField txtCapacidad;
 
+    /** EL txt ciudad. */
     @FXML
     private TextField txtCiudad;
 
+    /** EL txt financiacion. */
     @FXML
     private TextField txtFinanciacion;
 
+    /** EL txt nombre. */
     @FXML
     private TextField txtNombre;
 
+    /** EL txt num socios. */
     @FXML
     private TextField txtNumSocios;
 
+    /** EL txt num trabajadores. */
     @FXML
     private TextField txtNumTrabajadores;
 
+    /** EL txt numero. */
     @FXML
     private TextField txtNumero;
 
+    /** EL txt pais. */
     @FXML
     private TextField txtPais;
 
+    /** EL txt anio inauguracion. */
     @FXML
     private TextField txtAnioInauguracion;
     
+    /** EL id tabla privado. */
     private TableView<ModeloAeropuertoPrivado> idTablaPrivado;
     
+    /** EL id tabla publico. */
     private TableView<ModeloAeropuertoPublico> idTablaPublico;
 
+    /**
+     * Cancelar operacion.
+     *
+     * @param event the event
+     */
     @FXML
     void cancelarOperacion(ActionEvent event) {
     	ListadoAeropuertosController.getS().close();
     }
 
+    /**
+     * Guardar aeropuerto.
+     *
+     * @param event the event
+     */
     @FXML
     void guardarAeropuerto(ActionEvent event) {
     	String error="";
@@ -207,6 +239,24 @@ public class AniadirAeropuertoController {
     	ListadoAeropuertosController.getS().close();
     }
 
+	/**
+	 * Modificar aeropuerto.
+	 *
+	 * @param error the error
+	 * @param nombre the nombre
+	 * @param pais the pais
+	 * @param ciudad the ciudad
+	 * @param calle the calle
+	 * @param numero the numero
+	 * @param anioInauguracion the anio inauguracion
+	 * @param capacidad the capacidad
+	 * @param esPublico the es publico
+	 * @param financiacion the financiacion
+	 * @param numTrabajadores the num trabajadores
+	 * @param numSocios the num socios
+	 * @param existe the existe
+	 * @param al the al
+	 */
 	void modificarAeropuerto(String error, String nombre, String pais, String ciudad, String calle, int numero,
 			int anioInauguracion, int capacidad, boolean esPublico, float financiacion, int numTrabajadores,
 			int numSocios, boolean existe, Alert al) {
@@ -248,6 +298,24 @@ public class AniadirAeropuertoController {
 		}
 	}
 
+	/**
+	 * Aniadir aeropuerto.
+	 *
+	 * @param error the error
+	 * @param nombre the nombre
+	 * @param pais the pais
+	 * @param ciudad the ciudad
+	 * @param calle the calle
+	 * @param numero the numero
+	 * @param anioInauguracion the anio inauguracion
+	 * @param capacidad the capacidad
+	 * @param esPublico the es publico
+	 * @param financiacion the financiacion
+	 * @param numTrabajadores the num trabajadores
+	 * @param numSocios the num socios
+	 * @param existe the existe
+	 * @param al the al
+	 */
 	void aniadirAeropuerto(String error, String nombre, String pais, String ciudad, String calle, int numero,
 			int anioInauguracion, int capacidad, boolean esPublico, float financiacion, int numTrabajadores,
 			int numSocios, boolean existe, Alert al) {
@@ -285,6 +353,23 @@ public class AniadirAeropuertoController {
 		}
 	}
 
+	/**
+	 * Validar existencia.
+	 *
+	 * @param nombre the nombre
+	 * @param pais the pais
+	 * @param ciudad the ciudad
+	 * @param calle the calle
+	 * @param numero the numero
+	 * @param anioInauguracion the anio inauguracion
+	 * @param capacidad the capacidad
+	 * @param esPublico the es publico
+	 * @param financiacion the financiacion
+	 * @param numTrabajadores the num trabajadores
+	 * @param numSocios the num socios
+	 * @param existe the existe
+	 * @return true, if successful
+	 */
 	boolean validarExistencia(String nombre, String pais, String ciudad, String calle, int numero, int anioInauguracion,
 			int capacidad, boolean esPublico, float financiacion, int numTrabajadores, int numSocios, boolean existe) {
 		if(esPublico) {
@@ -305,6 +390,12 @@ public class AniadirAeropuertoController {
 		return existe;
 	}
 
+	/**
+	 * Validar strings.
+	 *
+	 * @param error the error
+	 * @return the string
+	 */
 	String validarStrings(String error) {
 		if(txtNombre.getText().isEmpty()) {
     		error+="El campo nombre es obligatorio\n";
@@ -321,6 +412,11 @@ public class AniadirAeropuertoController {
 		return error;
 	}
 
+    /**
+     * Toggle tipo aeropuerto.
+     *
+     * @param event the event
+     */
     @FXML
     void toggleTipoAeropuerto(ActionEvent event) {
     	if(radPrivado.isSelected()) {
@@ -332,6 +428,9 @@ public class AniadirAeropuertoController {
     	}
     }
     
+    /**
+     * Initializa los radioButtons y los grid.
+     */
     @FXML
     private void initialize() {
     	radPublico.setSelected(ListadoAeropuertosController.isEsPublico());
@@ -342,50 +441,110 @@ public class AniadirAeropuertoController {
     	radPublico.setDisable(!ListadoAeropuertosController.isEsAniadir());
     }
     
+    /**
+     * Sets the id tabla privado.
+     *
+     * @param idTablaPrivado the new id tabla privado
+     */
     public void setIdTablaPrivado(TableView<ModeloAeropuertoPrivado> idTablaPrivado) {
 		this.idTablaPrivado = idTablaPrivado;
 	}
     
+    /**
+     * Sets the id tabla publico.
+     *
+     * @param idTablaPublico the new id tabla publico
+     */
     public void setIdTablaPublico(TableView<ModeloAeropuertoPublico> idTablaPublico) {
 		this.idTablaPublico = idTablaPublico;
 	}
 
+	/**
+	 * Sets the txt calle text.
+	 *
+	 * @param txtCalle the new txt calle text
+	 */
 	public void setTxtCalleText(String txtCalle) {
 		this.txtCalle.setText(txtCalle);
 	}
 
+	/**
+	 * Sets the txt capacidad text.
+	 *
+	 * @param txtCapacidad the new txt capacidad text
+	 */
 	public void setTxtCapacidadText(String txtCapacidad) {
 		this.txtCapacidad.setText(txtCapacidad);
 	}
 
+	/**
+	 * Sets the txt ciudad text.
+	 *
+	 * @param txtCiudad the new txt ciudad text
+	 */
 	public void setTxtCiudadText(String txtCiudad) {
 		this.txtCiudad.setText(txtCiudad);
 	}
 
+	/**
+	 * Sets the txt financiacion text.
+	 *
+	 * @param txtFinanciacion the new txt financiacion text
+	 */
 	public void setTxtFinanciacionText(String txtFinanciacion) {
 		this.txtFinanciacion.setText(txtFinanciacion);
 	}
 
+	/**
+	 * Sets the txt nombre text.
+	 *
+	 * @param txtNombre the new txt nombre text
+	 */
 	public void setTxtNombreText(String txtNombre) {
 		this.txtNombre.setText(txtNombre);
 	}
 
+	/**
+	 * Sets the txt num socios text.
+	 *
+	 * @param txtNumSocios the new txt num socios text
+	 */
 	public void setTxtNumSociosText(String txtNumSocios) {
 		this.txtNumSocios.setText(txtNumSocios);
 	}
 
+	/**
+	 * Sets the txt num trabajadores text.
+	 *
+	 * @param txtNumTrabajadores the new txt num trabajadores text
+	 */
 	public void setTxtNumTrabajadoresText(String txtNumTrabajadores) {
 		this.txtNumTrabajadores.setText(txtNumTrabajadores);
 	}
 
+	/**
+	 * Sets the txt numero text.
+	 *
+	 * @param txtNumero the new txt numero text
+	 */
 	public void setTxtNumeroText(String txtNumero) {
 		this.txtNumero.setText(txtNumero);
 	}
 
+	/**
+	 * Sets the txt pais text.
+	 *
+	 * @param txtPais the new txt pais text
+	 */
 	public void setTxtPaisText(String txtPais) {
 		this.txtPais.setText(txtPais);
 	}
 
+	/**
+	 * Sets the txt anio inauguracion text.
+	 *
+	 * @param txtAnioInauguracion the new txt anio inauguracion text
+	 */
 	public void setTxtAnioInauguracionText(String txtAnioInauguracion) {
 		this.txtAnioInauguracion.setText(txtAnioInauguracion);
 	}

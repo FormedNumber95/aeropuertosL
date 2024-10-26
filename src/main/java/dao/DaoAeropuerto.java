@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import db.ConexionBBDD;
 import javafx.collections.FXCollections;
@@ -12,10 +13,24 @@ import javafx.collections.ObservableList;
 import model.ModeloAeropuerto;
 import model.ModeloAeropuertoPublico;
 
+/**
+ * Clase DaoAeropuerto.
+ */
 public class DaoAeropuerto {
 
+	/** The conection. */
 	private static Connection conection;
 	
+	/**
+	 * Conseguir ID.
+	 *
+	 * @param nombre the nombre
+	 * @param anioInauguracion the anio inauguracion
+	 * @param capacidad the capacidad
+	 * @param idDireccion the id direccion
+	 * @param imagen the imagen
+	 * @return the integer
+	 */
 	public static Integer conseguirID(String nombre,int anioInauguracion,int capacidad,int idDireccion,Blob imagen) {
 		conection=ConexionBBDD.getConnection();
 		String select="SELECT id FROM aeropuertos WHERE nombre=? AND anio_inauguracion=? AND capacidad=? AND id_direccion=?";
@@ -38,6 +53,15 @@ public class DaoAeropuerto {
 		return null;
 	}
 	
+	/**
+	 * Aniadir.
+	 *
+	 * @param nombre the nombre
+	 * @param anioInauguracion the anio inauguracion
+	 * @param capacidad the capacidad
+	 * @param idDireccion the id direccion
+	 * @param imagen the imagen
+	 */
 	public static void aniadir(String nombre,int anioInauguracion,int capacidad,int idDireccion,Blob imagen) {
 		conection=ConexionBBDD.getConnection();
 		String insert="INSERT INTO aeropuertos (nombre,anio_inauguracion,capacidad,id_direccion,imagen) VALUES (?,?,?,?,?)";
@@ -55,6 +79,16 @@ public class DaoAeropuerto {
 		}
 	}
 	
+	/**
+	 * Modificar por id.
+	 *
+	 * @param id the id
+	 * @param nombre the nombre
+	 * @param anioInauguracion the anio inauguracion
+	 * @param capacidad the capacidad
+	 * @param idDireccion the id direccion
+	 * @param imagen the imagen
+	 */
 	public static void modificarPorId(int id,String nombre,int anioInauguracion,int capacidad,int idDireccion,Blob imagen) {
 		conection=ConexionBBDD.getConnection();
 		String update="UPDATE aeropuertos SET nombre=?,anio_inauguracion=?,capacidad=?,id_direccion=?,imagen=? WHERE id=?";
@@ -70,6 +104,35 @@ public class DaoAeropuerto {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	/**
+	 * Eliminar.
+	 *
+	 * @param id the id
+	 */
+	public static void eliminar(int id) {
+		conection=ConexionBBDD.getConnection();
+		String delete="DELETE FROM aeropuertos WHERE id=?";
+		try {
+			PreparedStatement pstmt=conection.prepareStatement(delete);
+			pstmt.setInt(1,id);
+			pstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * Lista todas.
+	 *
+	 * @return the observable list
+	 */
+	public static ObservableList<ModeloAeropuerto> listaTodas() {
+		ObservableList<ModeloAeropuerto>lst=FXCollections.observableArrayList();
+		lst.addAll(DaoAeropuertoPrivado.cargarListaAeropuertosPrivados());
+		lst.addAll(DaoAeropuertoPublico.cargarListaAeropuertosPublicos());
+		return lst;
 	}
 	
 }

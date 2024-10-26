@@ -8,10 +8,20 @@ import java.sql.SQLException;
 import db.ConexionBBDD;
 import model.ModeloDireccion;
 
+/**
+ * Clase DaoDireccion.
+ */
 public class DaoDireccion {
 
+	/** EL conection. */
 	private static Connection conection;
 	
+	/**
+	 * Crear modelo direccion por ID.
+	 *
+	 * @param id the id
+	 * @return the modelo direccion
+	 */
 	public static ModeloDireccion crearModeloDireccionPorID(int id) {
 		conection=ConexionBBDD.getConnection();
 		String select="SELECT pais,ciudad,calle,numero FROM direcciones WHERE id=?";
@@ -29,6 +39,15 @@ public class DaoDireccion {
 		return null;
 	}
 	
+	/**
+	 * Conseguir ID.
+	 *
+	 * @param pais the pais
+	 * @param ciudad the ciudad
+	 * @param calle the calle
+	 * @param numero the numero
+	 * @return the integer
+	 */
 	public static Integer conseguirID(String pais, String ciudad,String calle,int numero) {
 		conection=ConexionBBDD.getConnection();
 		String select="SELECT id FROM direcciones WHERE pais=? AND ciudad=? AND calle=? AND numero=?";
@@ -49,6 +68,14 @@ public class DaoDireccion {
 		return null;
 	}
 	
+	/**
+	 * Aniadir.
+	 *
+	 * @param pais the pais
+	 * @param ciudad the ciudad
+	 * @param calle the calle
+	 * @param numero the numero
+	 */
 	public static void aniadir(String pais, String ciudad,String calle,int numero) {
 		conection=ConexionBBDD.getConnection();
 		String insert="INSERT INTO direcciones (pais,ciudad,calle,numero) VALUES (?,?,?,?)";

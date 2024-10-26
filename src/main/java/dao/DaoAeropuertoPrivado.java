@@ -10,10 +10,19 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import model.ModeloAeropuertoPrivado;
 
+/**
+ * Clase DaoAeropuertoPrivado.
+ */
 public class DaoAeropuertoPrivado {
 
+	/** EL conection. */
 	private static Connection conection;
 	
+	/**
+	 * Cargar lista aeropuertos privados.
+	 *
+	 * @return the observable list
+	 */
 	public static ObservableList<ModeloAeropuertoPrivado> cargarListaAeropuertosPrivados(){
 		ObservableList<ModeloAeropuertoPrivado>lst=FXCollections.observableArrayList();
 		try {
@@ -32,6 +41,12 @@ public class DaoAeropuertoPrivado {
 		return lst;
 	}
 	
+	/**
+	 * Aniadir.
+	 *
+	 * @param idAeropuerto the id aeropuerto
+	 * @param numSocios the num socios
+	 */
 	public static void aniadir(int idAeropuerto,int numSocios) {
 		conection=ConexionBBDD.getConnection();
 		String insert="INSERT INTO aeropuertos_privados VALUES (?,?)";
@@ -46,6 +61,12 @@ public class DaoAeropuertoPrivado {
 		}
 	}
 	
+	/**
+	 * Modificar por ID.
+	 *
+	 * @param id the id
+	 * @param numSocios the num socios
+	 */
 	public static void modificarPorID(int id,int numSocios) {
 		conection=ConexionBBDD.getConnection();
 		String update="UPDATE aeropuertos_privados SET numero_socios=? WHERE id_aeropuerto=?";
@@ -56,6 +77,23 @@ public class DaoAeropuertoPrivado {
 			pstmt.setInt(2,id);
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * Eliminar.
+	 *
+	 * @param id the id
+	 */
+	public static void eliminar(int id) {
+		conection=ConexionBBDD.getConnection();
+		String delete="DELETE FROM aeropuertos_privados WHERE id_aeropuerto=?";
+		try {
+			PreparedStatement pstmt=conection.prepareStatement(delete);
+			pstmt.setInt(1,id);
+			pstmt.executeUpdate();
+		}catch(SQLException e) {
 			e.printStackTrace();
 		}
 	}

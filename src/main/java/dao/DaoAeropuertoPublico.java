@@ -12,10 +12,19 @@ import model.ModeloAeropuerto;
 import model.ModeloAeropuertoPrivado;
 import model.ModeloAeropuertoPublico;
 
+/**
+ * Clase DaoAeropuertoPublico.
+ */
 public class DaoAeropuertoPublico {
 
+	/** EL conection. */
 	private static Connection conection;
 	
+	/**
+	 * Cargar lista aeropuertos publicos.
+	 *
+	 * @return the observable list
+	 */
 	public static ObservableList<ModeloAeropuertoPublico> cargarListaAeropuertosPublicos(){
 		ObservableList<ModeloAeropuertoPublico>lst=FXCollections.observableArrayList();
 		try {
@@ -34,6 +43,13 @@ public class DaoAeropuertoPublico {
 		return lst;
 	}
 	
+	/**
+	 * Aniadir.
+	 *
+	 * @param idAeropuerto the id aeropuerto
+	 * @param financiacion the financiacion
+	 * @param numTrabajadoes the num trabajadoes
+	 */
 	public static void aniadir(int idAeropuerto,float financiacion,int numTrabajadoes) {
 		conection=ConexionBBDD.getConnection();
 		String insert="INSERT INTO aeropuertos_publicos VALUES (?,?,?)";
@@ -49,6 +65,13 @@ public class DaoAeropuertoPublico {
 		}
 	}
 	
+	/**
+	 * Modificar por ID.
+	 *
+	 * @param id the id
+	 * @param financiacion the financiacion
+	 * @param numTrabajadores the num trabajadores
+	 */
 	public static void modificarPorID(int id,float financiacion, int numTrabajadores) {
 		conection=ConexionBBDD.getConnection();
 		String update="UPDATE aeropuertos_publicos SET financiacion=?,num_trabajadores=? WHERE id_aeropuerto=?";
@@ -60,6 +83,23 @@ public class DaoAeropuertoPublico {
 			pstmt.setInt(3,id);
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * Eliminar.
+	 *
+	 * @param id the id
+	 */
+	public static void eliminar(int id) {
+		conection=ConexionBBDD.getConnection();
+		String delete="DELETE FROM aeropuertos_publicos WHERE id_aeropuerto=?";
+		try {
+			PreparedStatement pstmt=conection.prepareStatement(delete);
+			pstmt.setInt(1,id);
+			pstmt.executeUpdate();
+		}catch(SQLException e) {
 			e.printStackTrace();
 		}
 	}

@@ -3,20 +3,44 @@ package model;
 import java.sql.Blob;
 import java.util.Objects;
 
+/**
+ * Clase ModeloAeropuertoPrivado.
+ */
 public class ModeloAeropuertoPrivado extends ModeloAeropuerto {
 
+	/** EL num socios. */
 	int numSocios;
 
+	/**
+	 * Instantiates a new modelo aeropuerto privado.
+	 *
+	 * @param nombre the nombre
+	 * @param anioInauguracion the anio inauguracion
+	 * @param capacidad the capacidad
+	 * @param direccion the direccion
+	 * @param imagen the imagen
+	 * @param numSocios the num socios
+	 */
 	public ModeloAeropuertoPrivado(String nombre, int anioInauguracion, int capacidad,
 			ModeloDireccion direccion, Blob imagen, int numSocios) {
 		super(nombre, anioInauguracion, capacidad, direccion, imagen);
 		this.numSocios = numSocios;
 	}
 
+	/**
+	 * Gets the num socios.
+	 *
+	 * @return the num socios
+	 */
 	public int getNumSocios() {
 		return numSocios;
 	}
 
+	/**
+	 * Hash code.
+	 *
+	 * @return the int
+	 */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -25,6 +49,12 @@ public class ModeloAeropuertoPrivado extends ModeloAeropuerto {
 		return result;
 	}
 
+	/**
+	 * Equals.
+	 *
+	 * @param obj the obj
+	 * @return true, if successful
+	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)

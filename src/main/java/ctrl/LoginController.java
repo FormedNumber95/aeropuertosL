@@ -16,17 +16,28 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
+/**
+ * Clase LoginController.
+ */
 public class LoginController {
 
+    /** EL btn login. */
     @FXML
     private Button btnLogin;
 
+    /** EL txt password. */
     @FXML
     private PasswordField txtPassword;
 
+    /** EL txt user. */
     @FXML
     private TextField txtUser;
     
+    /**
+     * Validar usuario.
+     *
+     * @param event the event
+     */
     @FXML
     void validarUsuario(ActionEvent event) {
     	Properties config=ConexionBBDD.loadProperties();
@@ -37,13 +48,6 @@ public class LoginController {
 				e.printStackTrace();
 			}
     	}
-    }
-    //TODO 	Borrar esto al entregar
-    @FXML
-    private void initialize() {
-    	Properties config=ConexionBBDD.loadProperties();
-    	txtUser.setText(config.getProperty("user"));
-    	txtPassword.setText(config.getProperty("password"));
     }
 
 }
