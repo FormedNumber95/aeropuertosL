@@ -18,23 +18,23 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" spacing="10.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ctrl.listadoAeropuertosController">
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" spacing="10.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ctrl.ListadoAeropuertosController">
    <children>
       <MenuBar>
         <menus>
           <Menu mnemonicParsing="false" text="Aeropuertos">
             <items>
-              <MenuItem fx:id="aniadirAeropuerto" mnemonicParsing="false" text="Añadir" />
-                  <MenuItem fx:id="editarAeropuerto" mnemonicParsing="false" text="Editar" />
-                  <MenuItem fx:id="borrarAeropuerto" mnemonicParsing="false" text="Borrar" />
-                  <MenuItem fx:id="mostarInfoAeropuerto" mnemonicParsing="false" text="Mostrar informacion" />
+              <MenuItem fx:id="aniadirAeropuerto" mnemonicParsing="false" onAction="#aniadirAeropuerto" text="Añadir" />
+                  <MenuItem fx:id="editarAeropuerto" mnemonicParsing="false" onAction="#editarAeropuerto" text="Editar" />
+                  <MenuItem fx:id="borrarAeropuerto" mnemonicParsing="false" onAction="#borrarAeropuerto" text="Borrar" />
+                  <MenuItem fx:id="mostarInfoAeropuerto" mnemonicParsing="false" onAction="#mostarDatosAeropuerto" text="Mostrar informacion" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Aviones">
             <items>
-              <MenuItem fx:id="aniadirAvion" mnemonicParsing="false" text="Añadir" />
-                  <MenuItem fx:id="toggleAvion" mnemonicParsing="false" text="Activar / desactivar" />
-                  <MenuItem fx:id="borrarAvion" mnemonicParsing="false" text="Borrar" />
+              <MenuItem fx:id="aniadirAvion" mnemonicParsing="false" onAction="#aniadirAvion" text="Añadir" />
+                  <MenuItem fx:id="toggleAvion" mnemonicParsing="false" onAction="#toggleAvion" text="Activar / desactivar" />
+                  <MenuItem fx:id="borrarAvion" mnemonicParsing="false" onAction="#borrarAvion" text="Borrar" />
             </items>
           </Menu>
             <Menu mnemonicParsing="false" text="Ayuda" />
@@ -70,7 +70,7 @@
             <HBox alignment="CENTER_RIGHT" GridPane.columnIndex="1" GridPane.halignment="RIGHT">
                <children>
                   <Label text="Nombre: " />
-                  <TextField fx:id="txtFiltro"/>
+                  <TextField fx:id="txtFiltro" />
                </children>
                <GridPane.margin>
                   <Insets right="10.0" />

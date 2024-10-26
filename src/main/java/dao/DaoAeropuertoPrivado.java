@@ -32,4 +32,32 @@ public class DaoAeropuertoPrivado {
 		return lst;
 	}
 	
+	public static void aniadir(int idAeropuerto,int numSocios) {
+		conection=ConexionBBDD.getConnection();
+		String insert="INSERT INTO aeropuertos_privados VALUES (?,?)";
+		try {
+			PreparedStatement pstmt;
+			pstmt=conection.prepareStatement(insert);
+			pstmt.setInt(1,idAeropuerto);
+			pstmt.setInt(2,numSocios);
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static void modificarPorID(int id,int numSocios) {
+		conection=ConexionBBDD.getConnection();
+		String update="UPDATE aeropuertos_privados SET numero_socios=? WHERE id_aeropuerto=?";
+		try {
+			PreparedStatement pstmt;
+			pstmt=conection.prepareStatement(update);
+			pstmt.setInt(1, numSocios);
+			pstmt.setInt(2,id);
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
 }

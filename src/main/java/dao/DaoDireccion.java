@@ -29,4 +29,40 @@ public class DaoDireccion {
 		return null;
 	}
 	
+	public static Integer conseguirID(String pais, String ciudad,String calle,int numero) {
+		conection=ConexionBBDD.getConnection();
+		String select="SELECT id FROM direcciones WHERE pais=? AND ciudad=? AND calle=? AND numero=?";
+		try {
+			PreparedStatement pstmt;
+			pstmt=conection.prepareStatement(select);
+			pstmt.setString(1,pais);
+			pstmt.setString(2,ciudad);
+			pstmt.setString(3,calle);
+			pstmt.setInt(4,numero);
+			ResultSet rs = pstmt.executeQuery();
+			if (rs.next()) {
+				return rs.getInt("id");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public static void aniadir(String pais, String ciudad,String calle,int numero) {
+		conection=ConexionBBDD.getConnection();
+		String insert="INSERT INTO direcciones (pais,ciudad,calle,numero) VALUES (?,?,?,?)";
+		try {
+			PreparedStatement pstmt;
+			pstmt=conection.prepareStatement(insert);
+			pstmt.setString(1,pais);
+			pstmt.setString(2,ciudad);
+			pstmt.setString(3,calle);
+			pstmt.setInt(4,numero);
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
 }
