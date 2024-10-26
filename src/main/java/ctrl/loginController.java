@@ -1,15 +1,20 @@
 package ctrl;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Properties;
 
+import dao.DaoAeropuerto;
 import db.ConexionBBDD;
 import es.aketzagonzalez.aeropuertosL.MainApp;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 public class loginController {
 
